@@ -68,10 +68,10 @@ public class MainActivity extends AppCompatActivity {
             @Override
             public void onResponse(Call<List<MovieData>> call, Response<List<MovieData>> response) {
                 if(response.code() == 400){
-                    Log.d(TAG, "WTF Query Wrong");
+                    Log.d(TAG, "Query Wrong");
                 }
                 else{
-                    Log.d(TAG, "DK WTF");
+                    Log.d(TAG, "DK");
                 }
                 //Log.d(TAG, String.valueOf(response.raw()));
                 List<MovieData> data = response.body();
