@@ -21,7 +21,7 @@ import retrofit2.converter.gson.GsonConverterFactory;
 
 public class MainActivity extends AppCompatActivity {
 
-    public String Naver_id = "02CeY0VDcCFFCgc6MTPq";
+    public String Naver_id = "";
     public String Naver_pw = "";
     public String keyword = "ironman";
 
@@ -59,10 +59,11 @@ public class MainActivity extends AppCompatActivity {
                 }
                 MovieData movieDataList = response.body();
                 List<items> movieitems = response.body().getItems();
-                Log.d(TAG, "이건 movieDataList : "+ movieDataList.items);
+
                 for(items itemscount : movieitems){
                     Log.d(TAG, itemscount.getUserrating().toString());
                 }
+                listView.setAdapter(new MovieAdapter(MainActivity.this, movieitems));
             }
 
             @Override
