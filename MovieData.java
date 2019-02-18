@@ -2,6 +2,7 @@ package com.example.zzong.openapipractice;
 
 import com.google.gson.annotations.SerializedName;
 
+import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
 
@@ -20,44 +21,7 @@ public class MovieData {
     public Integer display;
 
     @SerializedName("items")
-    public List<items> items;
-
-    class items{
-        @SerializedName("title")
-        public String title;
-
-        @SerializedName("pubDate")
-        public String pubdate;
-
-        @SerializedName("director")
-        public String director;
-
-        @SerializedName("actor")
-        public String actor;
-
-        @SerializedName("userRating")
-        public Double userrating;
-
-        public String getTitle(){
-            return title;
-        }
-
-        public String getPubdate() {
-            return pubdate;
-        }
-
-        public String getDirector(){
-            return director;
-        }
-
-        public String getActor() {
-            return actor;
-        }
-
-        public Double getUserrating() {
-            return userrating;
-        }
-    }
+    public List<items> items = new ArrayList<items>();
 
     public String getLastdate() {
         return lastdate;
@@ -75,8 +39,6 @@ public class MovieData {
         return display;
     }
 
-    public List<MovieData.items> getItems() {
-        return items;
-    }
+    public List<items> getItems() { return items; }
 
 }

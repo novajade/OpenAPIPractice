@@ -13,12 +13,13 @@ import android.widget.TextView;
 import java.util.Arrays;
 import java.util.List;
 
-public class MovieAdapter extends ArrayAdapter<MovieData> {
+public class MovieAdapter extends ArrayAdapter<items> {
     private Context context;
-    private List<MovieData> values;
+    private items values;
 
-    public MovieAdapter(@NonNull Context context, List<MovieData> values) {
-        super(context, R.layout.item_list, values);
+
+    public MovieAdapter(@NonNull Context context, items values) {
+        super(context, R.layout.item_list, (List<items>) values);
         this.context = context;
         this.values = values;
     }
@@ -33,12 +34,14 @@ public class MovieAdapter extends ArrayAdapter<MovieData> {
             row = inflater.inflate(R.layout.item_list, parent, false);
         }
 
-        TextView textView = (TextView) row.findViewById(R.id.item_list_text);
+        TextView title = (TextView) row.findViewById(R.id.movie_title);
 
-        MovieData movieData = values.get(position);
-        List<MovieData.items> message = movieData.items;
-        Log.d("Open Api", message.toString());
-        textView.setText(message.toString());
+
+        MovieData movieData = new MovieData();
+        items items = new items();
+
+        title.setText(items.getTitle());
+
         return row;
     }
 }

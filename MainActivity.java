@@ -7,7 +7,10 @@ import android.widget.EditText;
 import android.widget.ListView;
 
 import com.example.zzong.openapipractice.Retrofit.NaverInterface;
+import com.google.gson.Gson;
 
+import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.List;
 
 import retrofit2.Call;
@@ -54,7 +57,12 @@ public class MainActivity extends AppCompatActivity {
                 else{
                     Log.d(TAG, "DK What..");
                 }
-                Log.d(TAG, "is it working?");
+                MovieData movieDataList = response.body();
+                List<items> movieitems = response.body().getItems();
+                Log.d(TAG, "이건 movieDataList : "+ movieDataList.items);
+                for(items itemscount : movieitems){
+                    Log.d(TAG, itemscount.getUserrating().toString());
+                }
             }
 
             @Override
