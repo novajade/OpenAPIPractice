@@ -49,11 +49,22 @@ public class MovieAdapter extends ArrayAdapter<items> {
         items list = values.get(position);
 
         //Runtime error 원인 - placeholder와 error 없이 하면 이미지가 로드가 완료되지 않은 상태에서 imageview에 넣으려 하는거 같아서..
-        Picasso.get()
-                .load(list.getImage().toString())
-                .error(R.drawable.ic_launcher_foreground)
-                .placeholder(R.drawable.ic_launcher_background)
-                .into(image);
+        //img url이 비어있는 - 이미지 준비중 영화는 X표시 이미지로 바꿈
+        try{
+            Picasso.get()
+                    .load(list.getImage().toString())
+                    .error(R.drawable.ic_launcher_foreground)
+                    .placeholder(R.drawable.ic_launcher_background)
+                    .into(image);
+        }
+        catch (Exception e){
+            e.printStackTrace();
+            Picasso.get()
+                    .load(R.drawable.no_image)
+                    .placeholder(R.drawable.ic_launcher_background)
+                    .error(R.drawable.ic_launcher_foreground)
+                    .into(image);
+        }
 
         String text_title = list.getTitle();
         title.setText(text_title);
