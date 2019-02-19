@@ -8,7 +8,11 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ArrayAdapter;
+import android.widget.ImageView;
+import android.widget.RatingBar;
 import android.widget.TextView;
+
+import com.squareup.picasso.Picasso;
 
 import java.util.ArrayList;
 import java.util.Arrays;
@@ -36,10 +40,30 @@ public class MovieAdapter extends ArrayAdapter<items> {
         }
 
         TextView title = (TextView) row.findViewById(R.id.movie_title);
+        TextView year = (TextView) row.findViewById(R.id.movie_year);
+        TextView director = (TextView) row.findViewById(R.id.movie_director);
+        TextView actor = (TextView) row.findViewById(R.id.movie_actor);
+        RatingBar rate = (RatingBar) row.findViewById(R.id.movie_rate);
+        ImageView image = (ImageView) row.findViewById(R.id.movie_image);
 
         items list = values.get(position);
-        String text = list.getTitle();
-        title.setText(text);
+
+        //Runtime error 원인 - placeholder와 error 없이 하면 이미지가 로드가 완료되지 않은 상태에서 imageview에 넣으려 하는거 같아서..
+        Picasso.get()
+                .load(list.getImage().toString())
+                .error(R.drawable.ic_launcher_foreground)
+                .placeholder(R.drawable.ic_launcher_background)
+                .into(image);
+
+        String text_title = list.getTitle();
+        title.setText(text_title);
+        String text_year = list.getPubdate();
+        year.setText(text_year);
+        String text_director = list.getDirector();
+        director.setText(text_director);
+        String text_actor = list.getActor();
+        actor.setText(text_actor);
+        rate.setRating(list.getUserrating());
 
         return row;
     }

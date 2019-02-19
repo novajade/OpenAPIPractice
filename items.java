@@ -1,8 +1,13 @@
 package com.example.zzong.openapipractice;
 
+import android.media.Image;
+
 import com.google.gson.annotations.SerializedName;
 
 public class items {
+
+    @SerializedName("image")
+    public String image;
 
     @SerializedName("title")
     public String title;
@@ -17,7 +22,9 @@ public class items {
     public String actor;
 
     @SerializedName("userRating")
-    public Double userrating;
+    public Float userrating;
+
+    public String getImage(){ return image; }
 
     public String getTitle(){ return title; }
 
@@ -33,8 +40,7 @@ public class items {
         return actor;
     }
 
-    public Double getUserrating() {
+    public Float getUserrating() {
         return userrating;
     }
-
 }
