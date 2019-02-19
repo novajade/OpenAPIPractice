@@ -28,8 +28,8 @@ import retrofit2.converter.gson.GsonConverterFactory;
 
 public class MainActivity extends AppCompatActivity {
 
-    public String Naver_id = "02CeY0VDcCFFCgc6MTPq";
-    public String Naver_pw = "zJqe7__5Hb";
+    public String Naver_id = "";
+    public String Naver_pw = "";
     public String keyword;
 
     private View mainLayout;
